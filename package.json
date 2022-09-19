@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.1",
+    "jquery": "^3.6.1",
+    "lite-server": "^2.6.1"
+  },
+  "name": "comp2112-week2",
+  "version": "1.0.0",
+  "description": "Demo app for Week 2",
+  "main": "index.js",
+  "repository": "https://github.com/DafeTheKulu/COMP2112-Week2.git",
+  "author": "David Janssen <djanssen2112@gmail.com>",
+  "license": "MIT"
+}
