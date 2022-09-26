@@ -38,11 +38,19 @@
 	// }
 
 	//Third method of using functions: Arrow functions
-	let Start = () => {
+	// let Start = () => {
+	// 	console.log("App Started!");
+	// 	LoadData("GET", "./Data/contacts.json", function (XHR) {
+	// 		console.log(XHR);
+	// 	});
+	// };
+
+	// jQuery method
+	function Start() {
 		console.log("App Started!");
-		LoadData("GET", "./Data/contacts.json", function (XHR) {
-			console.log(XHR);
+		$.getJSON("./Data/contacts.json", function (DataSource) {
+			console.log(DataSource.ContactList[0]);
 		});
-	};
+	}
 	window.addEventListener("load", Start);
 })();
