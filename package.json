@@ -12,5 +12,8 @@
   "main": "index.js",
   "repository": "https://github.com/DafeTheKulu/COMP2112-Week2.git",
   "author": "David Janssen <djanssen2112@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.5.14"
+  }
 }
