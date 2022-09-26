@@ -1,0 +1,19 @@
+{
+	"ContactList": [
+		{
+			"FullName": "David Janssen",
+			"ContactNumber": "5555555555",
+			"EmailAddress": "dave@example.com"
+		},
+		{
+			"FullName": "Tim Timmins",
+			"ContactNumber": "5556666666",
+			"EmailAddress": "timtim@example.com"
+		},
+		{
+			"FullName": "Bob Boberts",
+			"ContactNumber": "5557777777",
+			"EmailAddress": "bobbob@example.com"
+		}
+	]
+}
