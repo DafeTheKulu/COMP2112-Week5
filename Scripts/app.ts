@@ -2,30 +2,51 @@
 // IIFE: Immediately Invoked Function Expression
 // AKA "Self Executing Function"
 (function () {
+	/**
+	 *This method saves our data to localStorage
+	 *
+	 * @param {any[]} contactList
+	 */
+	function SaveContactListData(contactList: any[]): void {
+		let count = 0;
+		for (const contact of contactList) {
+			let newContact = new Contact(
+				contact.FullName,
+				contact.ContactNumber,
+				contact.EmailAddress
+			);
+			localStorage.setItem(count.toString(), newContact.toJSON());
+			count++;
+		}
+	}
+	/**
+	 *This method reads our data from localStorage and returns a Contact Array
+	 *
+	 * @return {*}  {Contact[]}
+	 */
+	function LoadContactListData(): Contact[] {
+		// Create an empty Contact Array Container
+		let ContactArray = new Array<Contact>();
+
+		let keys = Object.keys(localStorage);
+		for (let key of keys) {
+			let newContact = new Contact();
+			newContact.fromJSON(localStorage.getItem(key));
+			ContactArray.push(newContact);
+		}
+		return ContactArray;
+	}
 	function Start() {
 		console.log("App Started!");
-		let contactList;
 
 		$.getJSON("./Data/contacts.json", function (DataSource) {
 			//Get your data from the DataSource
-			contactList = DataSource.ContactList;
-			let count = 0;
+			let contactList: any[] = DataSource.ContactList;
+			SaveContactListData(contactList);
 
-			for (const contact of contactList) {
-				let newContact = new Contact(
-					contact.FullName,
-					contact.ContactNumber,
-					contact.EmailAddress
-				);
-				localStorage.setItem(count.toString(), newContact.toJSON());
-				count++;
-			}
-
-			let keys = Object.keys(localStorage);
-			for (let key of keys) {
-				let newContact = new Contact();
-				newContact.fromJSON(localStorage.getItem(key));
-				console.log(newContact.toString());
+			let ContactArray = LoadContactListData();
+			for (const contact of ContactArray) {
+				console.log(contact.toString());
 			}
 		});
 	}
