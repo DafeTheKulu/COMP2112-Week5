@@ -37,6 +37,9 @@
 		return ContactArray;
 	}
 
+	/**
+	 * This method
+	 */
 	function LoadHeader(): void {
 		$.get("./Views/components/header.html", function (html_data) {
 			$("header").html(html_data);
@@ -68,6 +71,9 @@
 			});
 		});
 	}
+	/**
+	 * This method injects the content
+	 */
 	function LoadContent(): void {
 		let contentLink = document.title.toLowerCase();
 		$.get("./Views/content/" + contentLink, function (html_data) {
