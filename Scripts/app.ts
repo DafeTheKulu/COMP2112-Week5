@@ -36,19 +36,62 @@
 		}
 		return ContactArray;
 	}
+
+	function LoadHeader(): void {
+		$.get("./Views/components/header.html", function (html_data) {
+			//document.getElementsByTagName("header")[0].innerHTML = html_data;
+			$("header").html(html_data);
+			$("li>a").on("click", function () {
+				let title = $(this).prop("id") as string;
+				//Capitalize the link and make it the document title
+				let capitalizedTitle =
+					title.substring(0, 1).toUpperCase() + title.substring(1);
+				document.title = capitalizedTitle;
+				LoadContent();
+			});
+		});
+	}
+	function LoadContent(): void {
+		switch (document.title) {
+			case "Home":
+				$.get("./Views/content/home.html", function (html_data) {
+					$("main").html(html_data);
+				});
+				break;
+			case "About":
+				$.get("./Views/content/about.html", function (html_data) {
+					$("main").html(html_data);
+				});
+				break;
+			case "Projects":
+				$.get("./Views/content/projects.html", function (html_data) {
+					$("main").html(html_data);
+				});
+				break;
+			case "Services":
+				$.get("./Views/content/services.html", function (html_data) {
+					$("main").html(html_data);
+				});
+				break;
+			case "Contact":
+				$.get("./Views/content/contact.html", function (html_data) {
+					$("main").html(html_data);
+				});
+				break;
+		}
+	}
+	function LoadFooter(): void {
+		$.get("./Views/components/footer.html", function (html_data) {
+			$("footer").html(html_data);
+		});
+	}
 	function Start() {
 		console.log("App Started!");
-
-		$.getJSON("./Data/contacts.json", function (DataSource) {
-			//Get your data from the DataSource
-			let contactList: any[] = DataSource.ContactList;
-			SaveContactListData(contactList);
-
-			let ContactArray = LoadContactListData();
-			for (const contact of ContactArray) {
-				console.log(contact.toString());
-			}
-		});
+		//initial load
+		document.title = "Home";
+		LoadContent();
+		LoadHeader();
+		LoadFooter();
 	}
 	window.addEventListener("load", Start);
 })();
