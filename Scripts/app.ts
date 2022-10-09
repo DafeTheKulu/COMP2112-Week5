@@ -41,6 +41,7 @@
 	 * This method
 	 */
 	function LoadHeader(): void {
+		console.log("Loading header");
 		$.get("./Views/components/header.html", function (html_data) {
 			$("header").html(html_data);
 			$("li>a#Home").addClass("active");
@@ -58,7 +59,7 @@
 				history.pushState({}, "", "/" + document.title);
 
 				//Reset all the links
-				$("li>a").off("click"); //removeEventListener
+				//$("li>a").off("click"); //removeEventListener
 
 				//Remove the "active" class from each list item
 				$("li>a").each(function () {
@@ -75,8 +76,9 @@
 	 * This method injects the content
 	 */
 	function LoadContent(): void {
+		console.log("Loading content");
 		let contentLink = document.title.toLowerCase();
-		$.get("./Views/content/" + contentLink, function (html_data) {
+		$.get("./Views/content/" + contentLink + ".html", function (html_data) {
 			$("main").html(html_data);
 		});
 		// case "Home":
@@ -106,6 +108,7 @@
 		// 	break;
 	}
 	function LoadFooter(): void {
+		console.log("Loading footer");
 		$.get("./Views/components/footer.html", function (html_data) {
 			$("footer").html(html_data);
 		});
